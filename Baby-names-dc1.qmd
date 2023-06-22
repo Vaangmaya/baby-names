@@ -28,12 +28,13 @@ x |>
   )+
   geom_area()+
   scale_y_continuous(labels = scales::percent)+
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom")+
   labs(
     title = "Baby Names Ending with 'I' from 1900 to Present",
     subtitle = "More Females are named with names ending in I",
     x = "Year", y = "Percent of Babies"
   )
+  
 
 ```
 
