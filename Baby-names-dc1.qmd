@@ -1,5 +1,5 @@
 ---
-title: "Baby-names-dc1"
+title: "Baby Names"
 author: "Vaangmaya Rebba"
 format: html
 execute: 
@@ -19,15 +19,21 @@ library(tidyverse)
 
 x <- read_csv(file = "data/i_names.csv") |> 
   select(year, sex, name, prop) |> 
-  mutate(prop = prop*1000000) |>
   filter(year >= 1900) |> 
   summarize(sum_prop = sum(prop), .by = c(year, sex))
 
 x |> 
   ggplot(
-    aes(x = year, fill = sum_prop, color = sex)
+    aes(x = year, y = sum_prop, fill = sex, color = sex)
   )+
-  geom_density()
+  geom_area()+
+  scale_y_continuous(labels = scales::percent)+
+  theme(legend.position = "bottom")
+  labs(
+    title = "Baby Names Ending with 'I' from 1900 to Present",
+    subtitle = "More Females are named with names ending in I",
+    x = "Year", y = "Percent of Babies"
+  )
 
 ```
 
